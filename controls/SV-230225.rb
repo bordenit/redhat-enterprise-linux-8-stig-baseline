@@ -107,7 +107,7 @@ Agreement for details."
   tag 'host', 'container-conditional'
 
   only_if('Control not applicable - SSH is not installed within containerized RHEL', impact: 0.0) {
-    !virtualization.system.eql?('docker') || file('/etc/ssh/sshd_config').exist?
+    !virtualization.system.eql?('docker') || !file('/etc/ssh/sshd_config').exist?
   }
 
   # When Banner is commented, not found, disabled, or the specified file does not exist, this is a finding.
